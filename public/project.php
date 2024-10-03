@@ -2,10 +2,27 @@
   declare(strict_types = 1);
   require 'connect.php';
 
-  $projectId = $_GET['id'];
+  $projectId = $_GET['id'] ?? $_POST['projectId'];
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $content = htmlspecialchars($_POST['new-comment'] ?? '');
+
+    $projectId = $connection->real_escape_string($projectId);
+    $content = $connection->real_escape_string($content);
+
+    $query = 'INSERT INTO comments (projectId, content) VALUES (' . $projectId . ',\'' . $content . '\')';
+
+    if ($connection->query($query) === FALSE) {
+      echo "Error: " . $connection->error;
+    }
+  }
+
   $query = 'SELECT * FROM projects WHERE id=' . $projectId;
   $projectQuery = $connection->query($query);
   $projectInfo = mysqli_fetch_array($projectQuery);
+
+  $commentsQuery = 'SELECT * FROM comments WHERE projectId=' . $projectId;
+  $comments = $connection->query($commentsQuery);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,10 +41,18 @@
   </section>
   <section id="comments">
     <form id="new-comment" method="POST" action="#">
+      <input type="hidden" name="projectId" value="<?php echo $projectInfo['id'] ?>">
+
       <label for="new-comment">New Comment:</label>
       <input type="text" id="comment-input" name="new-comment" required>
       <button type="submit">Submit</button>
     </form>
+    <?php while($row = mysqli_fetch_array($comments)): ?>
+      <section>
+        <p><?php echo $row['content'] ?></p>
+        <p><?php echo $row['timestamp'] ?></p>
+      </section>
+    <?php endwhile; ?>
   </section>
   <?php include 'footer.php' ?>
 </body>
