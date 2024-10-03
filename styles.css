@@ -66,6 +66,14 @@ footer {
   width: 100%;
 }
 
-footer p {
+.external_link {
+  color: #aaa;
   margin: 0 10px 0;
+  text-decoration: none;
+}
+.external_link:hover {
+  color: #fff;
+}
+.external_link:active {
+  color: #888;
 }
