@@ -17,10 +17,12 @@
   <h1>Gerardo's Portfolio</h1>
   <main>
     <?php while($row = mysqli_fetch_array($projects)): ?>
-      <section>
-        <a href="/project.php?project=<?php echo $row['projectName'] ?>"><h3><?php echo $row['projectName'] ?></h3></a>
-        <p><?php echo $row['projectDescription'] ?></p>
-      </section>
+      <a href="/portfolio/public/project.php?project=<?php echo $row['projectName'] ?>" class="project">
+        <section>
+          <h3><?php echo $row['projectName'] ?></h3>
+          <p><?php echo $row['projectDescription'] ?></p>
+        </section>
+      </a>
     <?php endwhile; ?>
   </main>
   <?php include 'footer.php' ?>
