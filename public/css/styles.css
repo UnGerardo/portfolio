@@ -33,23 +33,32 @@ main {
   width: 100%;
 }
 
-main section {
-  place-self: center;
+.project {
+  color: #000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  place-self: center;
   padding: 10px;
   margin: 20px;
   width: 35vw;
   height: 40%;
+  text-decoration: none;
   transition: 0.3s;
 }
 
-main section:hover {
+.project:hover {
   border: 1px solid black;
   border-radius: 10px;
   transform: scale(1.1);
+}
+
+.project section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h3 {
@@ -66,6 +75,14 @@ footer {
   width: 100%;
 }
 
-footer p {
+.external_link {
+  color: #aaa;
   margin: 0 10px 0;
+  text-decoration: none;
+}
+.external_link:hover {
+  color: #fff;
+}
+.external_link:active {
+  color: #888;
 }
