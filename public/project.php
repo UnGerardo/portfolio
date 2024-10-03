@@ -2,8 +2,8 @@
   declare(strict_types = 1);
   require 'connect.php';
 
-  $projectName = $_GET['project'];
-  $query = 'SELECT * FROM projects WHERE projectName=\'' . $projectName . '\'';
+  $projectId = $_GET['id'];
+  $query = 'SELECT * FROM projects WHERE id=' . $projectId;
   $projectQuery = $connection->query($query);
   $projectInfo = mysqli_fetch_array($projectQuery);
 ?>
@@ -13,7 +13,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/styles.css">
-  <title><?php echo 'Project Name' ?></title>
+  <title><?php echo $projectInfo['projectName'] ?></title>
 </head>
 <body>
   <section>
@@ -21,6 +21,13 @@
       <h2><?php echo $projectInfo['projectName'] ?></h2>
     </a>
     <p><?php echo $projectInfo['projectDescription'] ?></p>
+  </section>
+  <section id="comments">
+    <form id="new-comment" method="POST" action="#">
+      <label for="new-comment">New Comment:</label>
+      <input type="text" id="comment-input" name="new-comment" required>
+      <button type="submit">Submit</button>
+    </form>
   </section>
   <?php include 'footer.php' ?>
 </body>
