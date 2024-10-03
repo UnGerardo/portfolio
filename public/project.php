@@ -5,15 +5,21 @@
   $projectId = $_GET['id'] ?? $_POST['projectId'];
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $content = htmlspecialchars($_POST['new-comment'] ?? '');
+    $formStartTime = $_POST['formStartTime'];
+    $currentTime = time();
+    $timeTaken = $currentTime - $formStartTime;
 
-    $projectId = $connection->real_escape_string($projectId);
-    $content = $connection->real_escape_string($content);
+    if ($timeTaken >= 3 && empty($_POST['name'])) {
+      $content = htmlspecialchars($_POST['new-comment'] ?? '');
 
-    $query = 'INSERT INTO comments (projectId, content) VALUES (' . $projectId . ',\'' . $content . '\')';
+      $projectId = $connection->real_escape_string($projectId);
+      $content = $connection->real_escape_string($content);
 
-    if ($connection->query($query) === FALSE) {
-      echo "Error: " . $connection->error;
+      $query = 'INSERT INTO comments (projectId, content) VALUES (' . $projectId . ',\'' . $content . '\')';
+
+      if ($connection->query($query) === FALSE) {
+        echo "Error: " . $connection->error;
+      }
     }
   }
 
@@ -42,6 +48,8 @@
   <section id="comments">
     <form id="new-comment" method="POST" action="#">
       <input type="hidden" name="projectId" value="<?php echo $projectInfo['id'] ?>">
+      <input type="text" name="name" style="display: none;">
+      <input type="hidden" name="formStartTime" value="<?php echo time() ?>">
 
       <label for="new-comment">New Comment:</label>
       <input type="text" id="comment-input" name="new-comment" required>
