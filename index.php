@@ -11,7 +11,7 @@
   <h1>Gerardo's Portfolio</h1>
   <main>
     <section>
-      <a><h3>Project 1</h3></a>
+      <a href="/project.php"><h3>Project 1</h3></a>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptas provident delectus iusto minus harum illum ab tempore porro. Maiores tenetur, nobis corporis vero alias quae enim ratione earum sit commodi hic eaque necessitatibus magnam recusandae suscipit non a. Minima nisi quaerat, rerum laudantium molestias debitis sed aliquam laborum rem!</p>
     </section>
     <section>
@@ -23,9 +23,6 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptas provident delectus iusto minus harum illum ab tempore porro. Maiores tenetur, nobis corporis vero alias quae enim ratione earum sit commodi hic eaque necessitatibus magnam recusandae suscipit non a. Minima nisi quaerat, rerum laudantium molestias debitis sed aliquam laborum rem!</p>
     </section>
   </main>
-  <footer>
-    <p>github</p>
-    <p>linkedin</p>
-  </footer>
+  <?php include 'footer.php' ?>
 </body>
 </html>
