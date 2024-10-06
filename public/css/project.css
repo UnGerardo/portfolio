@@ -1,0 +1,51 @@
+.project-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-info h2 {
+  font-size: 1.8rem;
+}
+.project-info h2:hover {
+  text-decoration: underline;
+}
+
+#comment-section {
+  background-color: #444;
+  display: grid;
+  grid-template-rows: 30px 1fr 40px;
+  justify-items: center;
+  padding: 5px 0 0;
+  height: 400px;
+  width: 100%;
+}
+
+#new-comment {
+  align-self: center;
+  width: max-content;
+}
+
+#new-comment label {
+  color: white;
+}
+
+#comments {
+  align-self: center;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px;
+  height: calc(100% - 10px);
+  width: max-content;
+  max-width: 80vw;
+}
+
+.comment {
+  border-bottom: 1px solid white;
+  margin: 0 0 10px;
+}
+
+.comment * {
+  color: white;
+}
