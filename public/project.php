@@ -39,8 +39,9 @@
   <title><?php echo $projectInfo['projectName'] ?></title>
 </head>
 <body>
+  <?php include 'header.php' ?>
   <section>
-    <a href="<?php echo $projectInfo['projectLink'] ?>">
+    <a href="<?php echo $projectInfo['projectLink'] ?>" target="_blank">
       <h2><?php echo $projectInfo['projectName'] ?></h2>
     </a>
     <p><?php echo $projectInfo['projectDescription'] ?></p>

@@ -14,7 +14,7 @@
   <title>Gerardo's Portfolio</title>
 </head>
 <body>
-  <h1>Gerardo's Portfolio</h1>
+  <?php include 'header.php' ?>
   <main>
     <?php while($row = mysqli_fetch_array($projects)): ?>
       <a href="/portfolio/public/project.php?id=<?php echo $row['id'] ?>" class="project">
