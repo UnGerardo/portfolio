@@ -47,6 +47,7 @@
     </a>
     <p><?php echo $projectInfo['projectDescription'] ?></p>
   </section>
+  <video src="../showcase/<?php echo str_replace(' ', '-', strtolower($projectInfo['projectName'])) ?>.mp4" controls></video>
   <section id="comment-section">
     <form id="new-comment" method="POST" action="#">
       <input type="hidden" name="projectId" value="<?php echo $projectInfo['id'] ?>">
